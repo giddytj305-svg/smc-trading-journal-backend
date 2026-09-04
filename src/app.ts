@@ -26,7 +26,17 @@ if (env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-// ── Health Check Route ─────────────────────────────
+// ── Health Check & Root Routes ─────────────────────
+app.get('/', (_req: Request, res: Response) => {
+  res.status(200).json({
+    success: true,
+    message: '🚀 SMC Trading Journal API',
+    version: '1.0.0',
+    docs: '/health',
+    timestamp: new Date().toISOString(),
+  });
+});
+
 app.get('/health', (_req: Request, res: Response) => {
   res.status(200).json({
     success: true,

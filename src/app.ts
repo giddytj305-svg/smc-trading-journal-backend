@@ -49,8 +49,10 @@ app.get('/health', (_req: Request, res: Response) => {
 import backtestRoutes from './routes/backtest';
 import liveRoutes from './routes/live';
 import dashboardRoutes from './routes/dashboard';
+import authRoutes from './routes/auth';
 
-// ── API Routes (To be implemented) ─────────────────
+// ── API Routes ─────────────────────────────────────
+app.use('/api/auth', authRoutes);        // Public auth endpoints
 app.use('/api/backtests', backtestRoutes);
 app.use('/api/live-trades', liveRoutes);
 app.use('/api/dashboard', dashboardRoutes);
